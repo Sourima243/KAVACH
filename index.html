@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Suraksha — personal safety</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="mark">S</div>
+    <div>
+      <h1>Suraksha</h1>
+      <div class="sub">Personal safety, one thumb away</div>
+    </div>
+    <button class="themebtn" id="themeBtn" type="button" aria-label="Switch colour theme">Theme</button>
+  </header>
+
+  <!-- SOS -->
+  <section class="card hero">
+    <div class="sos-shell">
+      <div class="sos-ring" id="ring"></div>
+      <button class="sos" id="sosBtn" type="button" aria-label="Hold to send an emergency alert">
+        SOS<small>hold 2 seconds</small>
+      </button>
+    </div>
+    <div class="hint" id="sosHint">Sends your live location to your contacts by text.</div>
+    <div class="row" style="margin-top:14px;width:100%">
+      <a class="btn primary" style="text-align:center;text-decoration:none" href="tel:112">Call 112</a>
+      <button class="btn" id="testBtn" type="button">Practice run</button>
+    </div>
+  </section>
+
+  <!-- Quick actions -->
+  <section class="card">
+    <h2>Right now</h2>
+    <div class="grid">
+      <button class="btn tile" id="sirenBtn" type="button">
+        <b>Siren</b><span>Loud alarm and a flashing screen to draw attention</span>
+      </button>
+      <button class="btn tile" id="fakeBtn" type="button">
+        <b>Fake call</b><span>A ringing call in 5 seconds so you can walk away</span>
+      </button>
+      <button class="btn tile" id="trackBtn" type="button">
+        <b>Share live location</b><span>Keeps updating your position while you move</span>
+      </button>
+      <button class="btn tile" id="recBtn" type="button">
+        <b>Record audio</b><span>Save a recording of what is happening around you</span>
+      </button>
+    </div>
+    <div class="muted" id="quickStatus" style="margin-top:10px"></div>
+  </section>
+
+  <!-- Safety timer -->
+  <section class="card">
+    <h2>Reach-home timer</h2>
+    <p class="muted">If you don't check in before the timer ends, Suraksha sends the alert for you.</p>
+    <div class="row">
+      <div>
+        <label for="timerMins">Minutes</label>
+        <input type="number" id="timerMins" min="1" max="240" value="20" inputmode="numeric">
+      </div>
+      <div>
+        <label for="timerNote">Where are you going?</label>
+        <input type="text" id="timerNote" placeholder="Hostel, by auto" maxlength="60">
+      </div>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn primary" id="timerStart" type="button">Start timer</button>
+      <button class="btn safe" id="timerSafe" type="button" hidden>I'm safe</button>
+    </div>
+    <div class="muted" id="timerStatus" style="margin-top:10px"></div>
+  </section>
+
+  <!-- Contacts -->
+  <section class="card">
+    <h2>Trusted contacts</h2>
+    <ul class="list" id="contactList"></ul>
+    <div class="empty" id="contactEmpty">No contacts yet. Add at least one person who would pick up at 2am.</div>
+    <div class="row" style="margin-top:12px">
+      <div>
+        <label for="cName">Name</label>
+        <input type="text" id="cName" placeholder="Maa" maxlength="40">
+      </div>
+      <div>
+        <label for="cPhone">Phone with country code</label>
+        <input type="tel" id="cPhone" placeholder="+91 98765 43210" maxlength="24">
+      </div>
+    </div>
+    <button class="btn" id="addContact" type="button" style="margin-top:12px">Add contact</button>
+  </section>
+
+  <!-- Settings -->
+  <section class="card">
+    <h2>Your details</h2>
+    <p class="muted">These go into the alert so the person reading it knows who and where.</p>
+    <label for="myName">Your name</label>
+    <input type="text" id="myName" placeholder="Ananya" maxlength="40">
+    <label for="myPhone">Your phone</label>
+    <input type="tel" id="myPhone" placeholder="+91 98765 43210" maxlength="24">
+    <label for="myNote">Anything a responder should know</label>
+    <input type="text" id="myNote" placeholder="Blood group B+, asthma inhaler in bag" maxlength="80">
+    <div class="row" style="margin-top:14px">
+      <button class="btn tile" id="shakeBtn" type="button" style="flex:1">
+        <b>Shake to alert</b><span>Shake the phone hard three times to start the countdown</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Helplines -->
+  <section class="card">
+    <h2>Helplines in India</h2>
+    <div class="lines">
+      <a class="line" href="tel:112"><b>112</b><span>All emergencies</span></a>
+      <a class="line" href="tel:1091"><b>1091</b><span>Women's helpline</span></a>
+      <a class="line" href="tel:181"><b>181</b><span>Women in distress</span></a>
+      <a class="line" href="tel:1098"><b>1098</b><span>Childline</span></a>
+      <a class="line" href="tel:108"><b>108</b><span>Ambulance</span></a>
+      <a class="line" href="tel:14416"><b>14416</b><span>Mental health, Tele-MANAS</span></a>
+    </div>
+  </section>
+
+  <!-- Log -->
+  <section class="card">
+    <h2>Activity</h2>
+    <ul class="list" id="logList"></ul>
+    <div class="empty" id="logEmpty">Nothing yet. Alerts and timers will show up here.</div>
+    <button class="btn ghost sm" id="clearAll" type="button" style="margin-top:12px">Erase all app data</button>
+  </section>
+
+  <p class="muted" style="text-align:center;margin-top:18px">
+    Everything you enter stays on this phone. Nothing is uploaded anywhere.
+  </p>
+</div>
+
+<!-- Countdown overlay -->
+<div class="overlay" id="countOverlay" role="alertdialog" aria-live="assertive">
+  <div>
+    <h2>Sending alert to your contacts</h2>
+    <div class="count" id="countNum">5</div>
+    <p class="muted" style="color:#C9BBD6">Tap cancel if you're fine.</p>
+    <button class="btn safe" id="cancelCount" type="button">Cancel</button>
+  </div>
+</div>
+
+<!-- Send sheet -->
+<div class="overlay" id="sendOverlay" role="dialog">
+  <div style="width:100%;max-width:380px">
+    <h2 id="sendTitle">Your alert is ready</h2>
+    <p class="muted" style="color:#C9BBD6" id="sendMsg"></p>
+    <div id="sendBtns" style="display:grid;gap:10px;margin:14px 0"></div>
+    <button class="btn ghost" id="closeSend" type="button" style="color:#fff;border-color:#4A3A5C">Close</button>
+  </div>
+</div>
+
+<!-- Fake call -->
+<div class="overlay" id="callScreen" role="dialog">
+  <div class="call-inner">
+    <div style="text-align:center">
+      <div class="caller" id="callerInitial">P</div>
+      <div style="font-family:Outfit;font-size:26px;font-weight:600" id="callerName">Papa</div>
+      <div style="color:#B9A8C6;font-size:14px;margin-top:4px">mobile — incoming call</div>
+    </div>
+    <div class="call-actions">
+      <button class="rnd dec" id="declineCall" type="button" aria-label="Decline call">✕</button>
+      <button class="rnd acc" id="acceptCall" type="button" aria-label="Accept call">✆</button>
+    </div>
+  </div>
+</div>
+
+<div class="strobe" id="strobe"></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
