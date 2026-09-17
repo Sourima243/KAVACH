@@ -1,5 +1,5 @@
-# Suraksha
-Suraksha is a personal safety web application built for women's security in emergency situations. It runs entirely in a web browser — no app store installation, no account creation, and no backend server. 
+# KAVACH
+KAVACH is a personal safety web application built for women's security in emergency situations. It runs entirely in a web browser — no app store installation, no account creation, and no backend server. 
 Everything happens on the user's own device using standard web browser capabilities, and all personal data (contacts, name, phone number) stays stored locally in that browser and never leaves the device.
 
 The core idea: in a moment of danger, a person needs to alert trusted people and share their exact location with the fewest possible taps, ideally without even looking at the screen carefully or typing anything.
