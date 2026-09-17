@@ -24,7 +24,7 @@
   }
 
   /* ============ storage ============ */
-  var KEY = "suraksha.v1";
+  var KEY = "kavach.v1";
   var state = { me: { name: "", phone: "", note: "" }, contacts: [], log: [], theme: "" };
 
   function load() {
@@ -489,7 +489,7 @@
     saveBtn.textContent = "Save the recording";
     saveBtn.addEventListener("click", function () {
       var stamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
-      var name = "suraksha-recording-" + stamp + ".webm";
+      var name = "kavach-recording-" + stamp + ".webm";
       if (window.claude && typeof window.claude.use === "function") {
         window.claude.use("downloads").then(function (dl) {
           if (!dl) { fallbackSave(url, name); return; }
